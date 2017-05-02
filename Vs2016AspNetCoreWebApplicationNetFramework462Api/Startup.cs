@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Swashbuckle.Swagger.Model;
 using System.IO;
+using System.Diagnostics;
 
 namespace Vs2016AspNetCoreWebApplicationNetFramework462Api
 {
@@ -16,6 +17,7 @@ namespace Vs2016AspNetCoreWebApplicationNetFramework462Api
     {
         public Startup(IHostingEnvironment env)
         {
+      
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
