@@ -42,15 +42,6 @@ namespace Vs2016AspNetCoreWebApplicationNetFramework462Api.Controllers
         {
             return ClassLibrary462.Class1.Name;
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet("ClassLibraryPclClass1Name")]
-        public string GetClassLibraryPclClass1Name()
-        {
-            return ClassLibraryPcl.Class1.Name;
-        }
     }
 
 
