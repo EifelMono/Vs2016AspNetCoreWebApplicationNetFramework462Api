@@ -32,7 +32,9 @@ namespace Vs2016AspNetCoreWebApplicationNetFramework462Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSwaggerGen(options =>
+            services.AddSwaggerGen();
+
+            services.ConfigureSwaggerGen(options =>
             {
                 options.SingleApiVersion(new Info
                 {
@@ -52,10 +54,13 @@ namespace Vs2016AspNetCoreWebApplicationNetFramework462Api
                         Url = "http://klapperich.de"
                     }
                 });
+
+                // Only the current project document xml file
                 //{
                 //    var xmlPath = Path.ChangeExtension(Environment.GetCommandLineArgs()[0], ".xml");
                 //    options.IncludeXmlComments(xmlPath);
                 //}
+
                 {
                     // Include all Xml's
                     var xmlPathBase = Path.GetDirectoryName(Environment.GetCommandLineArgs()[0]);
