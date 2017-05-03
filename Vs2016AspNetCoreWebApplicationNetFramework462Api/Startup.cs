@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using Swashbuckle.Swagger.Model;
 using System.IO;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace Vs2016AspNetCoreWebApplicationNetFramework462Api
 {
@@ -17,7 +18,7 @@ namespace Vs2016AspNetCoreWebApplicationNetFramework462Api
     {
         public Startup(IHostingEnvironment env)
         {
-      
+
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
@@ -51,8 +52,29 @@ namespace Vs2016AspNetCoreWebApplicationNetFramework462Api
                         Url = "http://klapperich.de"
                     }
                 });
-                var xmlPath = Path.ChangeExtension(Environment.GetCommandLineArgs()[0], ".xml");
-                options.IncludeXmlComments(xmlPath);
+                //{
+                //    var xmlPath = Path.ChangeExtension(Environment.GetCommandLineArgs()[0], ".xml");
+                //    options.IncludeXmlComments(xmlPath);
+                //}
+                {
+                    // Include all Xml's
+                    var xmlPathBase = Path.GetDirectoryName(Environment.GetCommandLineArgs()[0]);
+                    foreach (var filename in Directory.GetFiles(xmlPathBase, "*.xml"))
+                    {
+                        try
+                        {
+                            // Test if it contains an controller!!!!
+                            options.IncludeXmlComments(filename);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex);
+                        }
+
+                    }
+
+                }
+
             });
             // Add framework services.
             services.AddMvc();

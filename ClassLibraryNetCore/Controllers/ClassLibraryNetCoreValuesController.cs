@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
-namespace Vs2016AspNetCoreWebApplicationNetFramework462Api.Controllers
+namespace ClassLibraryNetCore.Controllers
 {
     /// <summary>
     /// This is the Values Controller
     /// </summary>
     [Route("api/[controller]")]
-    public class Vs2016AspNetCoreWebApplicationNetFramework462ApiValuesController : Controller
+    public class ClassLibraryNetCoreValuesController : Controller
     {
         /// <summary>
         /// GET api/values
